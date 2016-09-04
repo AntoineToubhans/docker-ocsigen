@@ -13,5 +13,8 @@ ENV OPAMVERBOSE 1
 ENV OPAMYES 1
 WORKDIR /home/opam
 RUN sudo -u opam opam init -y -a
+RUN sudo -u opam opam switch 4.02.3
+RUN sudo -u opam opam install -y camlp4 eliom js_of_ocaml ocsigenserver
 RUN sudo -u opam opam update
-RUN sudo -u opam opam install -y camlp4 js_of_ocaml ocsigenserver
+RUN sudo -u opam opam upgrade
+ENV PATH $PATH:/home/opam/.opam/4.02.3/bin

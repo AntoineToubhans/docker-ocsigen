@@ -1,4 +1,4 @@
-FROM ubuntu:trusty
+FROM ubuntu:16.04
 MAINTAINER Ocsigen Team <dev@ocsigen.org>
 RUN apt-get -y update
 RUN apt-get --no-install-recommends -y install adduser ca-certificates opam ocaml camlp4-extra wget curl sudo pkg-config git build-essential m4 unzip libpcre3-dev libssl-dev libsqlite3-dev

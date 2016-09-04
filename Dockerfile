@@ -14,7 +14,12 @@ ENV OPAMYES 1
 WORKDIR /home/opam
 RUN sudo -u opam opam init -y -a
 RUN sudo -u opam opam switch 4.02.3
-RUN sudo -u opam opam install -y camlp4 eliom js_of_ocaml ocsigenserver
+ENV PATH $PATH:/home/opam/.opam/4.02.3/bin
+ENV OCAML_TOPLEVEL_PATH /home/opam/.opam/4.02.3/lib/toplevel
+ENV PERL5LIB /home/opam/.opam/4.02.3/lib/perl5:$PERL5LIB
+ENV MANPATH $MANPATH:/home/opam/.opam/4.02.3/man
+ENV CAML_LD_LIBRARY_PATH /home/opam/.opam/4.02.3/lib/stublibs
+RUN sudo -u opam opam depext dbm.1.0
+RUN sudo -u opam opam install -y camlp4 dbm eliom js_of_ocaml ocsigenserver
 RUN sudo -u opam opam update
 RUN sudo -u opam opam upgrade
-ENV PATH $PATH:/home/opam/.opam/4.02.3/bin
